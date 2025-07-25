@@ -20,8 +20,8 @@ const Navbar = () => {
 
         <div className={`${styles.secondArea} ${menuOpen ? styles.open : ""}`}>
           <Link to="/">New Performers</Link>
-          <Link to="/females">Females</Link>
-          <Link to="/become-model">Become a Model</Link>
+          <Link to="/about">About</Link>
+          <Link to="/become">Become a Model</Link>
           <Link to="/contact">Contact</Link>
         </div>
       </div>
