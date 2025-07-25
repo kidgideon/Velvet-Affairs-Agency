@@ -1,0 +1,233 @@
+.manageModelsPage {
+  width: 100%;
+  min-height: 100dvh;
+  background-color: white;
+  padding: 2rem 1rem;
+  color: #1c1c1c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.manageModelsPage h1 {
+  color: #B80C09;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1000px;
+  width: 97%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  background-color: white;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.form input {
+  padding: 0.75rem;
+  width: 95%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form select {
+  padding: 0.75rem;
+  width: 95%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #111;
+}
+
+button {
+  background-color: #B80C09;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: #930a07;
+}
+
+.modelList {
+  margin-top: 3rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modelList h2 {
+  text-align: center;
+  color: #1c2230;
+  margin-bottom: 1rem;
+}
+
+.modelCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+.modelCard img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.modelCard:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+.manageModelsPage {
+  width: 100%;
+  background-color: white;
+  padding: 2rem 1rem;
+  color: #1c1c1c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.manageModelsPage h1 {
+  color: #B80C09;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.form input,
+.form select {
+  padding: 0.75rem;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: #111;
+  font-size: 0.9rem;
+}
+
+button {
+  background-color: #B80C09;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #930a07;
+}
+
+.modelList {
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 1rem;
+}
+
+.modelList h2 {
+  text-align: center;
+  color: #1c2230;
+  margin-bottom: 1rem;
+}
+
+.modelCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.modelCard img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.modelCard p {
+  margin: 0;
+  font-weight: 500;
+  color: #111;
+  font-size: 1rem;
+}
+
+.modelCard:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ✅ Responsive Adjustments */
+@media (max-width: 600px) {
+  .form,
+  .modelCard {
+    width: 100%;
+  }
+
+  .modelCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .modelCard img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+}

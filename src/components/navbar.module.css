@@ -1,0 +1,84 @@
+.navbarComponent {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.navbar {
+  width: 95%;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.firstArea p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1c1c1c;
+}
+
+.red {
+  color: #B80C09;
+}
+
+.secondArea {
+  display: flex;
+  gap: 2rem;
+}
+
+.secondArea a {
+  text-decoration: none;
+  color: #1c1c1c;
+  font-weight: 500;
+  position: relative;
+}
+
+.secondArea a:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #B80C09;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ✅ Responsive (Hamburger) */
+@media (max-width: 768px) {
+  .secondArea {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: white;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    box-shadow: -2px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .secondArea.open {
+    transform: translateX(0%);
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
