@@ -46,6 +46,35 @@
   width: 100%;
 }
 
+.genderToggle {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.genderToggle button {
+  padding: 10px 20px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.genderToggle button:hover {
+  border-color: #c41b1b;
+}
+
+.activeGender {
+  background-color: #c41b1b; /* velvet red */
+  color: #fff;
+  border-color: #c41b1b;
+}
+
+
 .card:hover {
   transform: scale(1.02);
 }

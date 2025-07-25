@@ -10,6 +10,7 @@ const ModelsListing = () => {
   const [likes, setLikes] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
+  const [gender, setGender] = useState("female"); // 👈 Default gender
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const ModelsListing = () => {
       setModels(list);
       const initialLikes = {};
       list.forEach(model => {
-        initialLikes[model.id] = 0; // 👈 starts at 0
+        initialLikes[model.id] = 0;
       });
       setLikes(initialLikes);
       setLoading(false);
@@ -39,7 +40,8 @@ const ModelsListing = () => {
 
   const filteredModels = models
     .filter(model =>
-      model.name.toLowerCase().includes(searchQuery.toLowerCase())
+      model.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      (model.gender?.toLowerCase() === gender)
     )
     .sort((a, b) =>
       sortOrder === "asc"
@@ -49,6 +51,23 @@ const ModelsListing = () => {
 
   return (
     <div className={styles.modelsListingInterface}>
+      {/* Gender Toggle Buttons */}
+      <div className={styles.genderToggle}>
+        <button
+          className={gender === "female" ? styles.activeGender : ""}
+          onClick={() => setGender("female")}
+        >
+          Female Models
+        </button>
+        <button
+          className={gender === "male" ? styles.activeGender : ""}
+          onClick={() => setGender("male")}
+        >
+          Male Models
+        </button>
+      </div>
+
+      {/* Search & Sort */}
       <div className={styles.headerBar}>
         <input
           type="text"
@@ -62,6 +81,7 @@ const ModelsListing = () => {
         </select>
       </div>
 
+      {/* Cards Grid */}
       <div className={styles.cardsGrid}>
         {loading ? (
           [...Array(6)].map((_, idx) => (

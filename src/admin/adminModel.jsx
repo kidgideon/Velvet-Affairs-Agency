@@ -142,6 +142,19 @@ const AdminModel = () => {
             placeholder={field}
           />
         ))}
+
+        <select
+  name="gender"
+  value={model.gender || "female"}
+  onChange={handleInputChange}
+>
+  <option value="female">Female</option>
+  <option value="male">Male</option>
+  <option value="non-binary">Non-binary</option>
+  <option value="transgender">Transgender</option>
+  <option value="other">Other</option>
+</select>
+
         <button onClick={saveChanges} disabled={isSaving}>
           {isSaving ? "Saving..." : "Save Changes"}
         </button>
