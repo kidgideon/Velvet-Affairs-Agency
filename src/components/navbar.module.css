@@ -20,10 +20,17 @@
   align-items: center;
 }
 
-.firstArea p {
-  font-size: 1.5rem;
+
+.mainText {
+  font-size: 140%;
   font-weight: bold;
   color: #1c1c1c;
+  margin: 0px;
+}
+
+.subText {
+  font-size: 80%;
+  margin: 2px;
 }
 
 .red {

@@ -9,9 +9,10 @@ const Navbar = () => {
     <div className={styles.navbarComponent}>
       <div className={styles.navbar}>
         <div className={styles.firstArea}>
-          <p>
+          <p className={styles.mainText}>
             <span className={styles.red}>Velvet</span> Affairs <span className={styles.red}>Agency</span>
           </p>
+          <p className={styles.subText}>ADULT TALENT MANAGERS</p>
         </div>
 
         <div className={styles.hamburger} onClick={() => setMenuOpen(!menuOpen)}>

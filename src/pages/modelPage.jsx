@@ -1,11 +1,62 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./modelPage.module.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { toast } from "sonner";
+
+// Component for video preview logic
+const BlurredVideoPlayer = ({ video, onUnlock }) => {
+  const [blurred, setBlurred] = useState(false);
+  const videoRef = useRef();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setBlurred(true);
+      toast("Video locked. Enter your subscription key to continue watching.");
+    }, 60000); // 60 seconds
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className={styles.previewWrapper}>
+      <video
+        ref={videoRef}
+        className={`${styles.video} ${blurred ? styles.videoBlurred : ""}`}
+        src={video.videoLink}
+        controls
+      />
+      {blurred && (
+        <>
+          <div className={styles.videoOverlay}>
+            <p> Preview ended</p>
+          </div>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const key = e.target.keyInput.value;
+              onUnlock(key);
+            }}
+            className={styles.keyForm}
+          >
+            <input type="text" name="keyInput" placeholder="Enter key to continue" />
+            <button type="submit">Unlock</button>
+          </form>
+          <p
+            className={styles.contactLink}
+            onClick={() =>
+              toast("Contact an admin to get the video key.")
+            }
+          >
+            Contact an admin to get the video key
+          </p>
+        </>
+      )}
+    </div>
+  );
+};
 
 const ModelPage = () => {
   const { modelId } = useParams();
@@ -32,10 +83,9 @@ const ModelPage = () => {
     fetchModel();
   }, [modelId]);
 
-  const handleKeyInput = (e, videoKey) => {
-    e.preventDefault();
-    if (videoKeys[videoKey] === videoKey) {
-      setUnlockedVideos((prev) => ({ ...prev, [videoKey]: true }));
+  const handleKeyInput = (inputKey, actualKey) => {
+    if (inputKey === actualKey) {
+      setUnlockedVideos((prev) => ({ ...prev, [actualKey]: true }));
       toast.success("Video unlocked!");
     } else {
       toast.error("Invalid subscription key.");
@@ -97,7 +147,7 @@ const ModelPage = () => {
 
         {/* Videos Section */}
         <div className={styles.videosSection}>
-          <h3>Private Videos</h3>
+          <h3>Private Show Room</h3>
           {model.videos?.length ? (
             model.videos.map((vid, idx) => (
               <div className={styles.videoCard} key={idx}>
@@ -108,35 +158,10 @@ const ModelPage = () => {
                     src={vid.videoLink}
                   />
                 ) : (
-                  <>
-                    <div className={styles.blurred}>
-                      <p>🔒 Locked Video</p>
-                    </div>
-                    <form
-                      onSubmit={(e) => handleKeyInput(e, vid.key)}
-                      className={styles.keyForm}
-                    >
-                      <input
-                        type="text"
-                        placeholder="Enter subscription key"
-                        onChange={(e) =>
-                          setVideoKeys((prev) => ({
-                            ...prev,
-                            [vid.key]: e.target.value,
-                          }))
-                        }
-                      />
-                      <button type="submit">Unlock</button>
-                    </form>
-                    <p
-                      className={styles.contactLink}
-                      onClick={() =>
-                        toast("Contact an admin to get the video key.")
-                      }
-                    >
-                      Contact an admin to get the video key
-                    </p>
-                  </>
+                  <BlurredVideoPlayer
+                    video={vid}
+                    onUnlock={(key) => handleKeyInput(key, vid.key)}
+                  />
                 )}
               </div>
             ))
