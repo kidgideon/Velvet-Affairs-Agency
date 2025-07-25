@@ -4,7 +4,7 @@ import styles from "./modelPage.module.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../../config/firebase";
+import { db } from "../../config/firebase";
 import { toast } from "sonner";
 
 const ModelPage = () => {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./modelsListing.module.css";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../../config/firebase";
+import { db } from "../../config/firebase";
 
 const ModelsListing = () => {
   const [models, setModels] = useState([]);

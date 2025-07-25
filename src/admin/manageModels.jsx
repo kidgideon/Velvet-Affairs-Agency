@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./manage.module.css";
-import { storage, db } from "../../../config/firebase";
+import { storage, db } from "../../config/firebase";
 import { toast } from "sonner";
 import { collection,addDoc,getDocs} from "firebase/firestore";
 import {ref, uploadBytesResumable,getDownloadURL} from "firebase/storage";

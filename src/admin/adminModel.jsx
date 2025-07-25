@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./adminModel.module.css";
-import { db, storage } from "../../../config/firebase";
+import { db, storage } from "../../config/firebase";
 import {
   doc,
   getDoc,
